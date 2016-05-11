@@ -1,1 +1,1 @@
-# giphy-animals
+# giphy-instruments
