@@ -1,7 +1,8 @@
 $(document).ready(function(){
 
     var instrumentButtons = [
-        'guitar', 'bass', 'drums', 'trumpet', 'flute', 'clarinet', 'trombone', 'tuba', 'bassoon', 'violin', 'cello'
+        'guitar', 'bass', 'drums', 'trumpet', 'flute', 'clarinet', 
+        'trombone', 'tuba', 'bassoon', 'violin', 'cello'
     ];
 
     for(i = 0; i < instrumentButtons.length; i++){
@@ -29,26 +30,44 @@ $(document).ready(function(){
             method: 'GET'
         })
             .done(function(response){
-                // console.log(response);
                 var results = response.data;
+                console.log(results);
 
                 for(i = 0; i < results.length; i++){
                     var instrumentDiv = $('<div>');
                     var instrumentImage = $('<img>');
                     var p = $('<p>').text(("Rating: ") + results[i].rating);
-                    // console.log(results[i].rating);
 
-                    // console.log(i);
 
                     instrumentImage.attr({
-                        'src': results[i].images.fixed_height.url,
-                        'data-state': 'still'
+                        'src': results[i].images.fixed_height_still.url,
+                        'data-state': 'still',
+                        'data-still': results[i].images.fixed_height_still.url,
+                        'data-animate': results[i].images.fixed_height.url,
+                        'class': 'instrumentImage'
                     });
-                    $(instrumentDiv).append(p, instrumentImage).addClass('imageContainer');
-                    $('#gifs').append(instrumentDiv);
+                    // console.log(instrumentImage.attr('src'));
 
+                    $('#gifs').append(p, instrumentImage);
+                    // $('#gifs').append(instrumentDiv);
                 }
+               
+                $('.instrumentImage').on('click', function(){
+                    var state = $(this).attr('data-state');
+                    console.log(state);
+
+                    if(state == 'still'){
+                        $(this).attr('src', $(this).data('animate'));
+                        $(this).attr('data-state', 'animate');
+                    }
+                    else{
+                        $(this).attr('src', $(this).data('still'));
+                        $(this).attr('data-state', 'still');
+                    }
+                });
             });
             return false;
         });
+
+
 })
