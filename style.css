@@ -1,17 +1,30 @@
+header {
+	font-size: 30px;
+	font-family: 'arial black';
+}
+
 #buttons {
 	width: 100%;
 }
 
 #gifs {
-	width: 70%;
+	width: 80%;
 	float: left;
 }
 
 #search {
-	width: 30%;
+	width: 20%;
 	float: right;
+	font-family: tahoma;
 }
 
 .imageContainer {
 	float: left;
+}
+
+button {
+	background-color: purple;
+	color: lightgray;
+	font-size: 15px;
+	border-radius: 8px;
 }

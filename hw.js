@@ -31,7 +31,7 @@ $(document).ready(function(){
         })
             .done(function(response){
                 var results = response.data;
-                console.log(results);
+                // console.log(results);
 
                 for(i = 0; i < results.length; i++){
                     var instrumentDiv = $('<div>');
@@ -48,8 +48,8 @@ $(document).ready(function(){
                     });
                     // console.log(instrumentImage.attr('src'));
 
-                    $('#gifs').append(p, instrumentImage);
-                    // $('#gifs').append(instrumentDiv);
+                    instrumentDiv.append(p, instrumentImage).addClass('imageContainer');
+                    $('#gifs').append(instrumentDiv);
                 }
                
                 $('.instrumentImage').on('click', function(){
